@@ -1,0 +1,27 @@
+{
+  "pages":[
+    "pages/zhihu/zhihu",
+    "pages/weather/weather",
+    "pages/index/index",
+    "pages/logs/logs"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "回声谷",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "color": "#000000",
+    "selectedColor":"#E07A38",
+    "backgroundColor": "#fff",
+    "list":[
+      {"pagePath":"pages/weather/weather","text":"天气"},
+      {
+        "pagePath": "pages/index/index",
+        "text": "新闻"
+      }],
+    "position":"top"
+  }
+}
