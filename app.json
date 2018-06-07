@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/zhihu/zhihu",
+    "pages/zhihu/zhihuInfo",    
     "pages/weather/weather",
     "pages/index/index",
     "pages/logs/logs"
@@ -18,6 +19,10 @@
     "backgroundColor": "#fff",
     "list":[
       {"pagePath":"pages/weather/weather","text":"天气"},
+      {
+        "pagePath": "pages/zhihu/zhihu",
+        "text": "知乎日报"
+      },
       {
         "pagePath": "pages/index/index",
         "text": "新闻"

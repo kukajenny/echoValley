@@ -8,46 +8,26 @@ Page({
     indicatorDots: true,
     vertical: false,
     autoplay: false,
-    circular: false,
-    interval: 2000,
+    circular: true,
+    interval: 2500,
     duration: 500,
     previousMargin: 0,
-    nextMargin: 0
+    nextMargin: 0,
+    stories:[],
+    top_stories:[],
   },
   //事件处理函数
   onLoad: function () {
+    var that = this;
     wx.request({
       url: 'https://news-at.zhihu.com/api/4/news/latest',
       success:function(ops){
         console.log(ops);
+          that.setData({
+            top_stories: ops.data.top_stories,
+            stories: ops.data.stories,
+          })
       },
-
-    })
-  },
-  changeProperty: function (e) {
-    var propertyName = e.currentTarget.dataset.propertyName
-    var newData = {}
-    newData[propertyName] = e.detail.value
-    this.setData(newData)
-  },
-  changeIndicatorDots: function (e) {
-    this.setData({
-      indicatorDots: !this.data.indicatorDots
-    })
-  },
-  changeAutoplay: function (e) {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
-  },
-  intervalChange: function (e) {
-    this.setData({
-      interval: e.detail.value
-    })
-  },
-  durationChange: function (e) {
-    this.setData({
-      duration: e.detail.value
     })
   },
 })
