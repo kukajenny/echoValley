@@ -1,1 +1,15 @@
-<rich-text  nodes="{{content}}"></rich-text>
+<view class='container'>
+  <view style='height:450rpx'>
+    <view class="swiper-item">
+      <image src="{{image}}" mode='aspectFill'></image>
+      <view class='blackView'></view>
+      <text>{{title}}</text>
+    </view>
+  </view>
+
+
+
+  <view style="display:block">
+    <rich-text nodes="{{content}}"></rich-text>
+  </view>
+</view>

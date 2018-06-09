@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/V2EX/V2EX",
     "pages/zhihu/zhihu",
     "pages/zhihu/zhihuInfo",    
     "pages/weather/weather",
@@ -14,9 +15,9 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar":{
-    "color": "#000000",
-    "selectedColor":"#E07A38",
-    "backgroundColor": "#fff",
+    "color": "#C6DDF9",
+    "selectedColor":"#fff",
+    "backgroundColor": "#6BA7F0",
     "list":[
       {"pagePath":"pages/weather/weather","text":"天气"},
       {
