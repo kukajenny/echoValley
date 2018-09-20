@@ -32,7 +32,7 @@
         <text class='FloatRight'>{{item.tmp_min}}℃/{{item.tmp_max}}℃</text>
       </view>
     </block>
-
+    <!-- <p>dfssf</p> -->
   </view>
 
 </view>

@@ -1,0 +1,12 @@
+<view class='contain'>
+  <text>{{title}}</text>
+  <view class='content'>
+    <view class='content_score'>{{score}}</view>
+    <view class='content_info'>
+      <text class='content_text'></text>
+      <image class='content_image' src='{{content_image}}'></image>
+    </view>
+  </view>
+  <view class='label'>{{label}}</view>
+  <view class='summary'>{{summary}}</view>
+</view>

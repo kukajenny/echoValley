@@ -1,7 +1,9 @@
 {
   "pages":[
-    "pages/V2EX/V2EX",
+    "pages/doubanMovie/doubanMovie",
+    "pages/doubanMovie/doubanMovieInfo",
     "pages/zhihu/zhihu",
+    "pages/V2EX/V2EX",
     "pages/zhihu/zhihuInfo",    
     "pages/weather/weather",
     "pages/index/index",
@@ -27,6 +29,10 @@
       {
         "pagePath": "pages/index/index",
         "text": "新闻"
+      },
+      {
+        "pagePath": "pages/doubanMovie/doubanMovie",
+        "text": "豆瓣电影"
       }],
     "position":"top"
   }

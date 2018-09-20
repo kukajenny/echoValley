@@ -1,6 +1,6 @@
 <view class="container">
   <view class="page-section">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <swiper indicator-dots="true" autoplay="true" circular="true" >
       <block wx:for="{{top_stories}}" wx:key="*this">
         <navigator url="zhihuInfo?id={{item.id}}" hover-class="navigator-hover">
           <swiper-item>

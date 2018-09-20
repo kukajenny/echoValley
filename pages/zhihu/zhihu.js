@@ -19,6 +19,7 @@ Page({
   //事件处理函数
   onLoad: function () {
     var that = this;
+    
     wx.request({
       url: 'https://news-at.zhihu.com/api/4/news/latest',
       success:function(ops){

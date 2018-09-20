@@ -1,0 +1,44 @@
+<!--weather.wxml-->
+<view class='contain'>
+  <view class='movie_search' style="flex-direction:row;">
+    <input type='text' confirm-type='search'></input>
+    <button size='mini' type='primary'>搜索</button>
+  </view>
+  <view>
+    <text>影院热映</text>
+    <scroll-view class="scroll-view_H containMargin" scroll-x="true" bindscroll="scroll">
+      <block wx:for-items="{{in_theaters}}">
+        <view class='doubanMovie_theaters'>
+          <navigator url="doubanMovieInfo?id={{item.id}}" hover-class="navigator-hover">
+            <view class='doubanMovie_theaters_info'>
+              <!-- <text>{{item.time}}</text> -->
+              <image src="{{item.images.small}}" mode='aspectFit'></image>
+              <text>{{item.title}}</text>
+            </view>
+          </navigator>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+
+  <view class='page-head-line'></view>
+
+  <view>
+    <text>即将上映</text>
+    <scroll-view class="scroll-view_H containMargin" scroll-x="true" bindscroll="scroll">
+      <block wx:for-items="{{coming_soon}}">
+        <view class='doubanMovie_theaters'>
+          <navigator url="doubanMovieInfo?id={{item.id}}" hover-class="navigator-hover">
+            <view class='doubanMovie_theaters_info'>
+              <!-- <text>{{item.time}}</text> -->
+              <image src="{{item.images.small}}" mode='aspectFit'></image>
+              <text>{{item.title}}</text>
+            </view>
+          </navigator>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+</view>
