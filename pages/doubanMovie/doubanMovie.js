@@ -10,6 +10,13 @@ Page({
   //事件处理函数
   onLoad: function () {
     var that = this;
+    wx.showLoading({
+      title: '加载中..',
+      mask: true,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    });
     wx.request({
       url: 'https://i-test.com.cn/v2/movie/in_theaters',
       header: {
@@ -31,8 +38,10 @@ Page({
           console.log(ops);
           that.setData({
             coming_soon: ops.data.subjects
-          })
+          });
+          wx.hideLoading();
         },
       })
+    
   },
 })

@@ -1,12 +1,15 @@
 <view class='contain'>
-  <text>{{title}}</text>
+  <text class='title'>{{title}}</text>
   <view class='content'>
     <view class='content_score'>{{score}}</view>
     <view class='content_info'>
       <text class='content_text'></text>
-      <image class='content_image' src='{{content_image}}'></image>
+      <image mode='widthFix' class='content_image' src='{{content_image}}'></image>
     </view>
   </view>
   <view class='label'>{{label}}</view>
-  <view class='summary'>{{summary}}</view>
+  <view class='summary'>
+    <text class='summary_info'>{{summary}}</text>
+    <text class='summary_open'>展开</text>
+  </view>
 </view>

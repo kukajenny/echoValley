@@ -4,6 +4,7 @@ page {
   font-size: 32rpx;
   line-height: 1.6;
 }
+
 .contain {
   padding: 20rpx;
   align-items: center;
@@ -11,7 +12,7 @@ page {
 }
 
 .contain text {
-  font-size: 0.8em;
+  /* font-size: 0.8em; */
   color: #222;
 }
 
@@ -21,26 +22,27 @@ page {
   box-shadow:0px 0px 8px #6BA7F0; */
 }
 
-.movie_search{
-  flex-direction:row;
+.movie_search {
+  flex-direction: row;
   display: flex;
 }
 
-.movie_search input{
-  width:75%;
-  border:1rpx solid rgba(0, 0, 0, 0.24);
+.movie_search input {
+  width: 75%;
+  border: 1rpx solid rgba(0, 0, 0, 0.24);
 }
 
-.movie_search button{
+.movie_search button {
   background-color: rgb(61, 132, 224);
 }
 
 .scroll-view_H {
   width: 100%;
-  white-space: nowrap;
-  
+  white-space: nowrap; /*强制不换行*/
 }
+
 /*隐藏滚动条  */
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -56,21 +58,23 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 180rpx;
-  height: 300rpx;
+  width: 200rpx;
+  height: 350rpx;
 }
 
-.doubanMovie_theaters_info image{
+.doubanMovie_theaters_info image {
   width: 100%;
 }
 
-.doubanMovie_theaters_info text{
-  height:70rpx;
-  line-height:35rpx;
+.doubanMovie_theaters_info text {
+  height: 70rpx;
+  line-height: 35rpx;
   width: 100%;
   display: block;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
   text-align: center;
 }
+
+

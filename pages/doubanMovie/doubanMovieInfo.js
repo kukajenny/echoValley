@@ -5,7 +5,7 @@ const app = getApp();
 Page({
   data: {
     title:'',
-    score:0,
+    score:'',
     content:'',
     content_image:'',
     label:[],
@@ -15,7 +15,8 @@ Page({
   onLoad: function (option) {
     var that = this;
     wx.request({
-      url: 'https://i-test.com.cn/v2/movie/subject/'+option.id,
+      // url: 'https://i-test.com.cn/v2/movie/subject/'+option.id,
+      url: 'https://i-test.com.cn/v2/movie/subject/26996640',
       header: {
         "Content-Type": "json"
       },
