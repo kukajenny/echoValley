@@ -1,5 +1,3 @@
-@import "../common/stars/stars.wxss";
-
 page {
   background-color: #f8f8f8;
   height: 100%;
@@ -27,7 +25,6 @@ page {
 .block {
   margin-top: 30rpx;
 }
-
 .movie_search {
   flex-direction: row;
   display: flex;
@@ -42,25 +39,19 @@ page {
   background-color: rgb(61, 132, 224);
 }
 
-.scroll-view_H {
-  width: 100%;
-  white-space: nowrap; /*强制不换行*/
+.movie_show {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-/*隐藏滚动条  */
-
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
-
-.doubanMovie_theaters {
+.movie_show_info {
+  /* flex-grow: 3; */
   padding: 15rpx;
   display: inline-block;
 }
 
-.doubanMovie_theaters_info {
+.movie_show_content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,11 +59,11 @@ page {
   height: 350rpx;
 }
 
-.doubanMovie_theaters_info .movie_image {
+.movie_show_content image {
   width: 100%;
 }
 
-.doubanMovie_theaters_info .movie_title {
+.movie_show_content text{
   height: 70rpx;
   line-height: 35rpx;
   width: 100%;
@@ -84,14 +75,3 @@ page {
   margin-top: 15rpx;
 }
 
-.movie_star{
-  font-size: 0.75em;
-  
-}
-/* .movie_star text{
-  color: rgb(160, 157, 157);
-} */
-.stars image {
-  height: 20rpx;
-  width: 20rpx;
-}

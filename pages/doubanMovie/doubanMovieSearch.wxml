@@ -1,0 +1,19 @@
+<view class='contain'>
+
+  <view class='movie_search' style="flex-direction:row;">
+    <input type='text' confirm-type='search' placeholder="请输入需要搜索的电影名" bindblur='changSearchValue'></input>
+    <button size='mini' type='primary' bindtap='searchMovie'>搜索</button>
+  </view>
+
+  <view class='movie_show block'>
+    <block wx:for-items='{{searchResult}}'>
+      <view class='movie_show_info'>
+        <view class='movie_show_content'>
+          <image mode='aspectFill' src='{{item.images.small}}'></image>
+          <text>{{item.title}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+</view>

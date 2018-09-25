@@ -9,14 +9,17 @@ Page({
     content:'',
     content_image:'',
     label:[],
-    summary:''
+    summary:'',
+    summaryOpenInfo:false,
+    directors:[],
+    actors:[],
   },
   //事件处理函数
   onLoad: function (option) {
     var that = this;
     wx.request({
-      // url: 'https://i-test.com.cn/v2/movie/subject/'+option.id,
-      url: 'https://i-test.com.cn/v2/movie/subject/26996640',
+      url: 'https://i-test.com.cn/v2/movie/subject/'+option.id,
+      // url: 'https://i-test.com.cn/v2/movie/subject/26996640',
       header: {
         "Content-Type": "json"
       },
@@ -28,8 +31,17 @@ Page({
           content_image: ops.data.images.small,
           label: ops.data.genres,
           summary: ops.data.summary,
+          directors: ops.data.directors,
+          actors: ops.data.casts
         })
       },
     })
   },
+  summaryOpen:function(event){
+    var that = this;
+    console.log(that.data.summaryOpenInfo);    
+    that.setData({//把选中值放入判断值
+      summaryOpenInfo: !that.data.summaryOpenInfo
+    })
+  }
 })

@@ -1,7 +1,8 @@
 {
   "pages":[
+    "pages/doubanMovie/doubanMovie",    
+    "pages/doubanMovie/doubanMovieSearch",
     "pages/doubanMovie/doubanMovieInfo",
-    "pages/doubanMovie/doubanMovie",
     "pages/zhihu/zhihu",
     "pages/V2EX/V2EX",
     "pages/zhihu/zhihuInfo",    

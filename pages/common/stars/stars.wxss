@@ -1,0 +1,21 @@
+.stars-container {
+  display: flex;
+  flex-direction: row;
+  align-items:center;/*flex中垂直居中*/
+}
+.stars {
+  display: flex;
+  flex-direction: row;
+  /* height: 17rpx; */
+  /* margin-right: 24rpx; */
+  /* margin-top: 6rpx; */
+}
+.stars image {
+  padding-left: 3rpx;
+  height: 25rpx;
+  width: 25rpx;
+}
+.star-score {
+  color: rgb(160, 157, 157) !important;
+  margin-left: 20rpx;
+}

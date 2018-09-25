@@ -1,0 +1,15 @@
+<template name="starsTemplate">
+  <view class='stars-container'>
+    <view class='stars'>
+      <text wx:if="{{score==0}}" class='star-score'>暂无评分</text>
+      <view wx:else>
+        <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="i" wx:key="position">
+          <image wx:if="{{score/2>i}}" src='../resources/img/starsy.png'></image>
+          <!-- <image wx:elif="{{i==2}}" src='/images/icon/none-star.png'></image> -->
+          <image wx:else src='../resources/img/starky.png'></image>
+        </block>
+        <text class='star-score'>{{score}}</text>
+      </view>
+    </view>
+  </view>
+</template>
