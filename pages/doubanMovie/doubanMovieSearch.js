@@ -8,7 +8,10 @@ Page({
     searchValue: "",
     searchStart: 0,
     searchCount: 12,
+    searchTotal: 1000,
     searchResult: [],
+    isHideLoadMore: false,
+    isComplete:false,
   },
 
   /**
@@ -25,25 +28,47 @@ Page({
   },
   searchMovie: function(e) {
     var that = this;
-    console.log(that.data.searchValue);
-    wx.showLoading({
-      title: '加载中..',
-      mask: true,
-    });
-    wx.request({
-      // url: 'https://i-test.com.cn/v2/movie/search?q=' + that.data.searchValue + '&start=' + that.data.searchStart + '&count=' + that.data.searchCount,
-      url: 'https://i-test.com.cn/v2/movie/search?q=天龙八部&start=' + that.data.searchStart + '&count=' + that.data.searchCount,
-      header: {
-        "Content-Type": "json"
-      },
-      success: function(ops) {
-        console.log(ops);
-        that.setData({
-          searchResult: ops.data.subjects
-        });
-        wx.hideLoading();
-      },
-    })
+    // if (that.data.searchValue == ""){
+    //   wx.showToast({
+    //     title: '请输入要搜索的电影名！',
+    //     icon: 'none',
+    //   })
+    //   return;
+    // }
+    if (that.data.searchTotal > that.data.searchStart) {
+      wx.showNavigationBarLoading() //在标题栏中显示加载
+      that.setData({ //把选中值放入判断值
+        isHideLoadMore: true,
+      })
+      wx.request({
+        url: 'https://i-test.com.cn/v2/movie/search?q=' + that.data.searchValue + '&start=' + that.data.searchStart + '&count=' + that.data.searchCount,
+        // url: 'https://i-test.com.cn/v2/movie/search?q=天龙八部&start=' + that.data.searchStart + '&count=' + that.data.searchCount,
+        header: {
+          "Content-Type": "json"
+        },
+        success: function(ops) {
+          console.log(ops);
+          that.setData({
+            searchResult: that.data.searchResult.concat(ops.data.subjects),
+            isHideLoadMore: false,
+            searchTotal:ops.data.total,
+          });
+          wx.hideNavigationBarLoading() //完成停止加载
+        },
+      })
+    }else{
+      // 全部加载完成
+      that.setData({ //把选中值放入判断值
+        isComplete: true
+      })
+      setTimeout(function () {
+      // complete
+      that.setData({ //把选中值放入判断值
+        isComplete: false
+      })
+    }, 1500);
+    }
+
   },
 
   /**
@@ -92,14 +117,22 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    wx.showNavigationBarLoading() //在标题栏中显示加载
-    console.log("加载中")
+    var that = this;
+    
+    that.setData({ //把选中值放入判断值
+      searchStart: that.data.searchStart + that.data.searchCount
+    })
+    that.searchMovie();
+
+
     //模拟加载
-    setTimeout(function () {
-      // complete
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1500);
+    // setTimeout(function() {
+    //   // complete
+    //   wx.hideNavigationBarLoading() //完成停止加载
+    //   that.setData({ //把选中值放入判断值
+    //     isHideLoadMore: false
+    //   })
+    // }, 1500);
   },
 
   /**

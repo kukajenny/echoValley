@@ -1,19 +1,31 @@
-<view class='contain'>
+<import src="../common/stars/stars.wxml" />
 
+<view class='contain'>
   <view class='movie_search' style="flex-direction:row;">
     <input type='text' confirm-type='search' placeholder="请输入需要搜索的电影名" bindblur='changSearchValue'></input>
-    <button size='mini' type='primary' bindtap='searchMovie'>搜索</button>
+    <button size='mini' class='btn_search' type='primary' bindtap='searchMovie' hover-class='btn_hover'>搜索</button>
   </view>
 
   <view class='movie_show block'>
     <block wx:for-items='{{searchResult}}'>
       <view class='movie_show_info'>
-        <view class='movie_show_content'>
-          <image mode='aspectFill' src='{{item.images.small}}'></image>
-          <text>{{item.title}}</text>
-        </view>
+        <navigator url="doubanMovieInfo?id={{item.id}}" hover-class="navigator-hover">
+          <view class='movie_show_content'>
+            <image mode='aspectFill' src='{{item.images.small}}'></image>
+            <text class='movie_show_title'>{{item.title}}</text>
+            <view class='movie_star'>
+              <template is="starsTemplate" data="{{score:item.rating.average}}" />
+            </view>
+          </view>
+        </navigator>
       </view>
     </block>
   </view>
-
+  <view class="weui-loadmore" hidden="{{!isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore" hidden="{{!isComplete}}">
+    <view class="weui-loadmore__tips">加载完成</view>
+  </view>
 </view>

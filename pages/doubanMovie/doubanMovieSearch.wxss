@@ -1,3 +1,6 @@
+@import "../common/weui.wxss";
+@import "../common/stars/stars.wxss";
+
 page {
   background-color: #f8f8f8;
   height: 100%;
@@ -35,8 +38,12 @@ page {
   border: 1rpx solid rgba(0, 0, 0, 0.24);
 }
 
-.movie_search button {
+.movie_search .btn_search {
   background-color: rgb(61, 132, 224);
+}
+
+.btn_hover {
+  background-color: red;
 }
 
 .movie_show {
@@ -63,7 +70,7 @@ page {
   width: 100%;
 }
 
-.movie_show_content text{
+.movie_show_content .movie_show_title{
   height: 70rpx;
   line-height: 35rpx;
   width: 100%;
@@ -75,3 +82,14 @@ page {
   margin-top: 15rpx;
 }
 
+.movie_star{
+  font-size: 0.75em;
+  
+}
+/* .movie_star text{
+  color: rgb(160, 157, 157);
+} */
+.stars image {
+  height: 20rpx;
+  width: 20rpx;
+}
