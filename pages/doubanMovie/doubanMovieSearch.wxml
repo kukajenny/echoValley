@@ -1,24 +1,14 @@
-<import src="../common/stars/stars.wxml" />
+<import src="../common/movieShow/movieShow.wxml" />
 
 <view class='contain'>
   <view class='movie_search' style="flex-direction:row;">
-    <input type='text' confirm-type='search' placeholder="请输入需要搜索的电影名" bindblur='changSearchValue'></input>
+    <input type='text' confirm-type='search' placeholder="请输入需要搜索的电影名" bindinput='changSearchValue' auto-focus></input>
     <button size='mini' class='btn_search' type='primary' bindtap='searchMovie' hover-class='btn_hover'>搜索</button>
   </view>
 
   <view class='movie_show block'>
     <block wx:for-items='{{searchResult}}'>
-      <view class='movie_show_info'>
-        <navigator url="doubanMovieInfo?id={{item.id}}" hover-class="navigator-hover">
-          <view class='movie_show_content'>
-            <image mode='aspectFill' src='{{item.images.small}}'></image>
-            <text class='movie_show_title'>{{item.title}}</text>
-            <view class='movie_star'>
-              <template is="starsTemplate" data="{{score:item.rating.average}}" />
-            </view>
-          </view>
-        </navigator>
-      </view>
+      <template is="movieShowTemplate" data="{{item:item}}" />
     </block>
   </view>
   <view class="weui-loadmore" hidden="{{!isHideLoadMore}}">

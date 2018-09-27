@@ -2,9 +2,9 @@
 <view class='contain'>
   <text class='movie_title'>{{title}}</text>
   <view class='content'>
-  <view class='content_info'>
+    <view class='content_info'>
       <text class='content_text'></text>
-      <image mode='widthFix' class='content_image' src='{{content_image}}'></image>
+      <image mode='aspectFit' class='content_image' src='{{content_image}}'></image>
     </view>
     <template is="starsTemplate" data="{{score:score}}" />
     <view class='label'>
@@ -15,7 +15,7 @@
       </block>
     </view>
     <!-- <view class='content_score'>{{score}}</view> -->
-    
+
   </view>
 
   <view class='block summary'>
@@ -24,12 +24,13 @@
     <text class="{{summaryOpenInfo?'summary_info_open':'summary_info_close'}}">{{summary}}</text>
   </view>
   <view class='block person'>
+
     <text class='subtitle'>影人介绍</text>
     <scroll-view class="scroll-view_H containMargin" scroll-x="true" bindscroll="scroll">
       <block wx:for-items="{{directors}}">
         <view class='doubanMovie_theaters'>
           <view class='persons_content'>
-            <image class='person_image' src="{{item.avatars.small}}" mode='aspectFit'></image>
+            <image class='person_image' src="{{item.avatars.small==null?initImg:item.avatars.small}}" mode='aspectFit'></image>
             <text class='person_name'>{{item.name}}</text>
             <text class='person_position'>导演</text>
           </view>
@@ -39,12 +40,13 @@
       <block wx:for-items="{{actors}}">
         <view class='doubanMovie_theaters'>
           <view class='persons_content'>
-            <image class='person_image' src="{{item.avatars.small}}" mode='aspectFit'></image>
+            <image class='person_image' src="{{item.avatars.small==null?initImg:item.avatars.small}}" mode='aspectFill'></image>
             <text class='person_name'>{{item.name}}</text>
             <text class='person_position'>演员</text>
           </view>
         </view>
       </block>
     </scroll-view>
+
   </view>
 </view>

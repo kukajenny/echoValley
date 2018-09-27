@@ -7,9 +7,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+
     in_theaters: [],
-    coming_soon: []
+    coming_soon: [],
+    top250: [],
+    initImg: '../resources/img/initImg.png',
+    top250Start: 0,
+    top250Count: 12,
+    top250Total: 250,
+    isHideLoadMore: false,
+    isComplete: false,
   },
 
   /**
@@ -17,13 +24,6 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
-    wx.showLoading({
-      title: '加载中..',
-      mask: true,
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    });
     wx.request({
         url: 'https://i-test.com.cn/v2/movie/in_theaters',
         header: {
@@ -46,16 +46,48 @@ Page({
           that.setData({
             coming_soon: ops.data.subjects
           });
-          wx.hideLoading();
+        },
+      }),
+      that.loadTop250();
+  },
+  loadTop250: function(e) {
+    var that = this;
+    if (that.data.top250Total > that.data.top250Start) {
+      that.setData({ //把选中值放入判断值
+        isHideLoadMore: true,
+      })
+      wx.request({
+        url: 'https://i-test.com.cn/v2/movie/top250?start=' + that.data.top250Start + '&count=' + that.data.top250Count,
+        header: {
+          "Content-Type": "json"
+        },
+        success: function(ops) {
+          console.log(ops);
+          that.setData({
+            top250: that.data.top250.concat(ops.data.subjects),
+            isHideLoadMore: false,
+          });
         },
       })
+    } else {
+      // 全部加载完成
+      that.setData({ //把选中值放入判断值
+        isComplete: true
+      })
+      setTimeout(function() {
+        // complete
+        that.setData({ //把选中值放入判断值
+          isComplete: false
+        })
+      }, 1500);
+    }
   },
-  gotoSearch: function (e) {
+  gotoSearch: function(e) {
     wx.navigateTo({
-      url:'doubanMovieSearch'
+      url: 'doubanMovieSearch'
     })
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -95,7 +127,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.setData({
+      top250Start: this.data.top250Start + this.data.top250Count
+    })
+    this.loadTop250();
   },
 
   /**

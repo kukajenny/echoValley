@@ -1,0 +1,14 @@
+<import src="../stars/stars.wxml" />
+<template name="movieShowTemplate">
+  <view class='movie_show_info'>
+        <navigator url="doubanMovieInfo?id={{item.id}}" hover-class="navigator-hover">
+          <view class='movie_show_content'>
+            <image mode='aspectFit' src='{{item.images.small==null?initImg:item.images.small}}'></image>
+            <text class='movie_show_title'>{{item.title}}</text>
+            <view class='movie_star'>
+              <template is="starsTemplate" data="{{score:item.rating.average}}" />
+            </view>
+          </view>
+        </navigator>
+      </view>
+</template>

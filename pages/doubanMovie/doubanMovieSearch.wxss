@@ -1,5 +1,5 @@
 @import "../common/weui.wxss";
-@import "../common/stars/stars.wxss";
+@import "../common/movieShow/movieShow.wxss";
 
 page {
   background-color: #f8f8f8;
@@ -52,44 +52,5 @@ page {
   flex-wrap: wrap;
 }
 
-.movie_show_info {
-  /* flex-grow: 3; */
-  padding: 15rpx;
-  display: inline-block;
-}
 
-.movie_show_content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 200rpx;
-  height: 350rpx;
-}
 
-.movie_show_content image {
-  width: 100%;
-}
-
-.movie_show_content .movie_show_title{
-  height: 70rpx;
-  line-height: 35rpx;
-  width: 100%;
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-align: center;
-  margin-top: 15rpx;
-}
-
-.movie_star{
-  font-size: 0.75em;
-  
-}
-/* .movie_star text{
-  color: rgb(160, 157, 157);
-} */
-.stars image {
-  height: 20rpx;
-  width: 20rpx;
-}

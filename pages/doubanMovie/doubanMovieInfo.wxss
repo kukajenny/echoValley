@@ -43,7 +43,8 @@ page {
 
 .content .content_info {
   float: right;
-  width: 35%;
+  width: 360rpx;
+  height: 480rpx;
 }
 
 .content .content_info .content_image {

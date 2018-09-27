@@ -12,6 +12,7 @@ Page({
     searchResult: [],
     isHideLoadMore: false,
     isComplete:false,
+    initImg:'../resources/img/initImg.png'
   },
 
   /**
@@ -28,13 +29,23 @@ Page({
   },
   searchMovie: function(e) {
     var that = this;
-    // if (that.data.searchValue == ""){
-    //   wx.showToast({
-    //     title: '请输入要搜索的电影名！',
-    //     icon: 'none',
-    //   })
-    //   return;
-    // }
+    if (that.data.searchValue == ""){
+      wx.showToast({
+        title: '请输入要搜索的电影名！',
+        icon: 'none',
+      })
+      return;
+    }
+    that.setData({
+      searchStart: 0,
+      searchTotal: 1000,
+      searchResult: [],
+    });
+    that.updateMovie();
+  },
+
+  updateMovie:function(e){
+    var that = this;
     if (that.data.searchTotal > that.data.searchStart) {
       wx.showNavigationBarLoading() //在标题栏中显示加载
       that.setData({ //把选中值放入判断值
@@ -46,31 +57,29 @@ Page({
         header: {
           "Content-Type": "json"
         },
-        success: function(ops) {
+        success: function (ops) {
           console.log(ops);
           that.setData({
             searchResult: that.data.searchResult.concat(ops.data.subjects),
             isHideLoadMore: false,
-            searchTotal:ops.data.total,
+            searchTotal: ops.data.total,
           });
           wx.hideNavigationBarLoading() //完成停止加载
         },
       })
-    }else{
+    } else {
       // 全部加载完成
       that.setData({ //把选中值放入判断值
         isComplete: true
       })
       setTimeout(function () {
-      // complete
-      that.setData({ //把选中值放入判断值
-        isComplete: false
-      })
-    }, 1500);
+        // complete
+        that.setData({ //把选中值放入判断值
+          isComplete: false
+        })
+      }, 1500);
     }
-
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -103,14 +112,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    wx.showNavigationBarLoading() //在标题栏中显示加载
+    // wx.showNavigationBarLoading() //在标题栏中显示加载
 
-    //模拟加载
-    setTimeout(function() {
-      // complete
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1500);
+    // //模拟加载
+    // setTimeout(function() {
+    //   // complete
+    //   wx.hideNavigationBarLoading() //完成停止加载
+    //   wx.stopPullDownRefresh() //停止下拉刷新
+    // }, 1500);
   },
 
   /**
@@ -122,7 +131,7 @@ Page({
     that.setData({ //把选中值放入判断值
       searchStart: that.data.searchStart + that.data.searchCount
     })
-    that.searchMovie();
+    that.updateMovie();
 
 
     //模拟加载

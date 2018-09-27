@@ -1,22 +1,24 @@
 <!--weather.wxml-->
 <import src="../common/stars/stars.wxml" />
+<import src="../common/movieShow/movieShow.wxml" />
+
 
 <view class='contain'>
 
   <view class='movie_search' style="flex-direction:row;">
-    <input type='text' confirm-type='search' placeholder="请输入需要搜索的电影名" bindfocus='gotoSearch'></input>
+    <input type='text' confirm-type='search' placeholder="请输入需要搜索的电影名" bindfocus='gotoSearch' ></input>
     <button size='mini' type='primary'>搜索</button>
   </view>
 
   <view class='block'>
-    <text>影院热映</text>
+    <text class='subtitle'>影院热映</text>
     <scroll-view class="scroll-view_H containMargin" scroll-x="true" bindscroll="scroll">
       <block wx:for-items="{{in_theaters}}">
         <view class='doubanMovie_theaters'>
           <navigator url="doubanMovieInfo?id={{item.id}}" hover-class="navigator-hover">
             <view class='doubanMovie_theaters_info'>
               <!-- <text>{{item.time}}</text> -->
-              <image class='movie_image' src="{{item.images.small}}" mode='aspectFit'></image>
+              <image class='movie_image' src="{{item.images.small==null?initImg:item.images.small}}" mode='aspectFit'></image>
               <text class='movie_title'>{{item.title}}</text>
               <view class='movie_star'>
                 <template is="starsTemplate" data="{{score:item.rating.average}}" />
@@ -29,14 +31,14 @@
   </view>
 
   <view>
-    <text>即将上映</text>
+    <text class='subtitle'>即将上映</text>
     <scroll-view class="scroll-view_H containMargin" scroll-x="true" bindscroll="scroll">
       <block wx:for-items="{{coming_soon}}">
         <view class='doubanMovie_theaters'>
           <navigator url="doubanMovieInfo?id={{item.id}}" hover-class="navigator-hover">
             <view class='doubanMovie_theaters_info'>
               <!-- <text>{{item.time}}</text> -->
-              <image class='movie_image' src="{{item.images.small}}" mode='aspectFit'></image>
+              <image class='movie_image' src="{{item.images.small==null?initImg:item.images.small}}" mode='aspectFit'></image>
               <text class='movie_title'>{{item.title}}</text>
               <view class='movie_star'>
                 <template is="starsTemplate" data="{{score:item.rating.average}}" />
@@ -49,22 +51,16 @@
   </view>
 
   <view class='top250'>
-    <text>豆瓣评分前250</text>
-    <scroll-view class="scroll-view_H containMargin" scroll-x="true" bindscroll="scroll">
-      <block wx:for-items="{{coming_soon}}">
-        <view class='doubanMovie_theaters'>
-          <navigator url="doubanMovieInfo?id={{item.id}}" hover-class="navigator-hover">
-            <view class='doubanMovie_theaters_info'>
-              <!-- <text>{{item.time}}</text> -->
-              <image class='movie_image' src="{{item.images.small}}" mode='aspectFit'></image>
-              <text class='movie_title'>{{item.title}}</text>
-              <view class='movie_star'>
-                <template is="starsTemplate" data="{{score:item.rating.average}}" />
-              </view>
-            </view>
-          </navigator>
-        </view>
+    <text class='subtitle'>豆瓣评分前250</text>
+      <block wx:for-items="{{top250}}">
+        <template is="movieShowTemplate" data="{{item:item}}" />
       </block>
-    </scroll-view>
+  </view>
+  <view class="weui-loadmore" hidden="{{!isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore" hidden="{{!isComplete}}">
+    <view class="weui-loadmore__tips">加载完成</view>
   </view>
 </view>

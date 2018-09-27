@@ -1,4 +1,7 @@
 @import "../common/stars/stars.wxss";
+@import "../common/weui.wxss";
+@import "../common/movieShow/movieShow.wxss";
+
 
 page {
   background-color: #f8f8f8;
@@ -26,6 +29,12 @@ page {
 
 .block {
   margin-top: 30rpx;
+}
+
+.subtitle {
+  font-size: 1.1em;
+  color: rgb(34, 106, 194) !important;
+  display: block;
 }
 
 .movie_search {
