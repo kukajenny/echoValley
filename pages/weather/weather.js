@@ -12,6 +12,7 @@ Page({
     showImg: '',
     hourlyList: [],
     forecastList: [],
+    isloaded:false,
   },
 
   onLoad: function () {
@@ -45,7 +46,8 @@ Page({
               showImg: ops.data.HeWeather6[0].now.cond_code,
               temperature: ops.data.HeWeather6[0].now.tmp + "℃",
               hourlyList: hList,
-              forecastList: fList
+              forecastList: fList,
+              isloaded:true,
             });
           }
         });

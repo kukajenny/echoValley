@@ -28,4 +28,11 @@
 
     </block>
   </view>
+  <view class="weui-loadmore" hidden="{{!isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore" hidden="{{!isComplete}}">
+    <view class="weui-loadmore__tips">加载完成</view>
+  </view>
 </view>

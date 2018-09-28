@@ -13,11 +13,17 @@ Page({
     summaryOpenInfo:false,
     directors:[],
     actors:[],
-    initImg: '../resources/img/initImg.png'
+    initImg: '../resources/img/initImg.png',
+    isloaded: false,
+    
   },
   //事件处理函数
   onLoad: function (option) {
     var that = this;
+    wx.showLoading({
+      title: '加载中..',
+      mask: true,
+    });
     wx.request({
       url: 'https://i-test.com.cn/v2/movie/subject/'+option.id,
       // url: 'https://i-test.com.cn/v2/movie/subject/26996640',
@@ -33,8 +39,10 @@ Page({
           label: ops.data.genres,
           summary: ops.data.summary,
           directors: ops.data.directors,
-          actors: ops.data.casts
+          actors: ops.data.casts,
+          isloaded: true,
         })
+        wx.hideLoading();
       },
     })
   },

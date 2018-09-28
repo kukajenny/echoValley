@@ -1,38 +1,41 @@
 <!--weather.wxml-->
 <view class='contain'>
-  <view class="weather_show containMargin">
-    
-    <image src="https://cdn.heweather.com/cond_icon/{{showImg}}.png" mode='aspectFill'></image>
-    <text>{{weatherStatus}}</text>
-    <text>{{temperature}}</text>
-  </view>
-  <text>{{location}}</text>
-  <text class='FloatRight'>{{updateTime}}</text>
-  <view class='page-head-line'></view>
+  <view hidden='{{!isloaded}}'>
+    <view class="weather_show containMargin">
 
-  <scroll-view class="scroll-view_H containMargin" scroll-x="true" bindscroll="scroll">
-    <block wx:for-items="{{hourlyList}}">
-      <view class='weather_time'>
-        <view class='weather_time_info'>
-          <text>{{item.time}}</text>
-          <image src="https://cdn.heweather.com/cond_icon/{{item.cond_code}}.png" mode='aspectFill'></image>
-          <text>{{item.cond_txt}}{{item.tmp}}℃</text>
+      <image src="https://cdn.heweather.com/cond_icon/{{showImg}}.png" mode='aspectFill'></image>
+      <text>{{weatherStatus}}</text>
+      <text>{{temperature}}</text>
+    </view>
+    <text>{{location}}</text>
+    <text class='FloatRight'>{{updateTime}}</text>
+    <view class='page-head-line'></view>
+
+    <scroll-view class="scroll-view_H containMargin" scroll-x="true" bindscroll="scroll">
+      <block wx:for-items="{{hourlyList}}">
+        <view class='weather_time'>
+          <view class='weather_time_info'>
+            <text>{{item.time}}</text>
+            <image src="https://cdn.heweather.com/cond_icon/{{item.cond_code}}.png" mode='aspectFill'></image>
+            <text>{{item.cond_txt}}{{item.tmp}}℃</text>
+          </view>
         </view>
-      </view>
-    </block>
-  </scroll-view>
+      </block>
+    </scroll-view>
 
-  <view class='page-head-line'></view>
+    <view class='page-head-line'></view>
 
-  <view class='containMargin'>
-    <block wx:for-items="{{forecastList}}">
-      <view class='weather_forecast'>
-        <text>{{item.date}}</text>
-        <image src="https://cdn.heweather.com/cond_icon/{{item.cond_code_d}}.png" mode='aspectFill'></image>
-        <text class='FloatRight'>{{item.tmp_min}}℃/{{item.tmp_max}}℃</text>
-      </view>
-    </block>
-    <!-- <p>dfssf</p> -->
+    <view class='containMargin'>
+      <block wx:for-items="{{forecastList}}">
+        <view class='weather_forecast'>
+          <text>{{item.date}}</text>
+          <image src="https://cdn.heweather.com/cond_icon/{{item.cond_code_d}}.png" mode='aspectFill'></image>
+          <text class='FloatRight'>{{item.tmp_min}}℃/{{item.tmp_max}}℃</text>
+        </view>
+      </block>
+      <!-- <p>dfssf</p> -->
+    </view>
   </view>
+
 
 </view>

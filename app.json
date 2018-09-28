@@ -1,9 +1,9 @@
 {
   "pages":[
+    "pages/zhihu/zhihu",
     "pages/doubanMovie/doubanMovie",
     "pages/doubanMovie/doubanMovieInfo",
     "pages/doubanMovie/doubanMovieSearch",
-    "pages/zhihu/zhihu",
     "pages/V2EX/V2EX",
     "pages/zhihu/zhihuInfo",    
     "pages/weather/weather",
@@ -26,10 +26,6 @@
       {
         "pagePath": "pages/zhihu/zhihu",
         "text": "知乎日报"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "新闻"
       },
       {
         "pagePath": "pages/doubanMovie/doubanMovie",

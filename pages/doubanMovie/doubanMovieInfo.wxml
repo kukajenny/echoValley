@@ -1,5 +1,5 @@
 <import src="../common/stars/stars.wxml" />
-<view class='contain'>
+<view class='contain' hidden='{{!isloaded}}'>
   <text class='movie_title'>{{title}}</text>
   <view class='content'>
     <view class='content_info'>

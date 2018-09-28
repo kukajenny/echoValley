@@ -3,7 +3,7 @@
 <import src="../common/movieShow/movieShow.wxml" />
 
 
-<view class='contain'>
+<view class='contain' hidden='{{!isloaded}}'>
 
   <view class='movie_search' style="flex-direction:row;">
     <input type='text' confirm-type='search' placeholder="请输入需要搜索的电影名" bindfocus='gotoSearch' ></input>
@@ -56,11 +56,12 @@
         <template is="movieShowTemplate" data="{{item:item}}" />
       </block>
   </view>
-  <view class="weui-loadmore" hidden="{{!isHideLoadMore}}">
+  
+</view>
+<view class="weui-loadmore" hidden="{{!isHideLoadMore}}">
     <view class="weui-loading"></view>
     <view class="weui-loadmore__tips">正在加载</view>
   </view>
   <view class="weui-loadmore" hidden="{{!isComplete}}">
     <view class="weui-loadmore__tips">加载完成</view>
   </view>
-</view>

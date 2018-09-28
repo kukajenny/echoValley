@@ -17,6 +17,8 @@ Page({
     top250Total: 250,
     isHideLoadMore: false,
     isComplete: false,
+    isloaded: false,
+    
   },
 
   /**
@@ -44,7 +46,8 @@ Page({
         success: function(ops) {
           console.log(ops);
           that.setData({
-            coming_soon: ops.data.subjects
+            coming_soon: ops.data.subjects,
+            isloaded: true,
           });
         },
       }),

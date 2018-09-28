@@ -12,7 +12,8 @@ Page({
     searchResult: [],
     isHideLoadMore: false,
     isComplete:false,
-    initImg:'../resources/img/initImg.png'
+    initImg:'../resources/img/initImg.png',
+
   },
 
   /**
